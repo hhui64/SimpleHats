@@ -85,12 +85,7 @@ minecraft {
 
 repositories {
     maven {
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
-    }
-    maven {
-        name = "ModMaven"
-        url = "https://modmaven.dev"
+        url = "https://maven.blamejared.com/"
     }
     maven {
         url = "https://maven.theillusivec4.top/"
@@ -105,8 +100,10 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curio_version}")
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curio_version}")
+    //compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curio_version}")
+    //runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curio_version}")
+    compileOnly fg.deobf("curse.maven:curios-309927:5266541")
+    runtimeOnly fg.deobf("curse.maven:curios-309927:5266541")
 
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
