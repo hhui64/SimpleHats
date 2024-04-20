@@ -3,9 +3,7 @@
   "package": "fonnymunkey.simplehats.mixin.core",
   "compatibilityLevel": "JAVA_17",
   "refmap": "mixins.simplehats.refmap.json",
-  "mixins": [
-    "MixinCuriosImplMixinHooks"
-  ],
+  "mixins": [],
   "minVersion": "0.8",
   "client": [
     "MixinHumanoidArmorLayer"
