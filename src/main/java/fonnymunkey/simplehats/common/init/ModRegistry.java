@@ -59,7 +59,7 @@ public class ModRegistry {
             hat = Registry.register(Registries.ITEM, new Identifier(SimpleHats.modId, entry.getHatName()), hat);
             ModRegistry.hatList.add(hat);
 
-            if(hat instanceof HatItemDyeable) CauldronBehavior.WATER_CAULDRON_BEHAVIOR.map().put((HatItemDyeable)hat, CauldronBehavior.CLEAN_DYEABLE_ITEM);
+            if(hat instanceof HatItemDyeable) CauldronBehavior.WATER_CAULDRON_BEHAVIOR.put((HatItemDyeable)hat, CauldronBehavior.CLEAN_DYEABLE_ITEM);
         }
         SimpleHats.logger.log(Level.INFO, "Generated " + ModRegistry.hatList.size() + " hat items from hat entries.");
     }
