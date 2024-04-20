@@ -3,19 +3,20 @@ package fonnymunkey.simplehats;
 import fonnymunkey.simplehats.common.init.HatJson;
 import fonnymunkey.simplehats.common.init.ModConfig;
 import fonnymunkey.simplehats.common.init.ModRegistry;
+import fonnymunkey.simplehats.common.item.HatItem;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotTypeMessage;
-import top.theillusivec4.curios.api.SlotTypePreset;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 import top.theillusivec4.curios.api.client.ICurioRenderer;
 
@@ -28,7 +29,7 @@ public class SimpleHats {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.COMMON, ModConfig.COMMON_SPEC);
         ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.CLIENT, ModConfig.CLIENT_SPEC);
-        eventBus.addListener(this::enqueueIMC);
+        eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::clientSetup);
 
         HatJson.registerHatJson();
@@ -45,8 +46,15 @@ public class SimpleHats {
         ModRegistry.LOOT_REG.register(eventBus);
     }
 
-    public void enqueueIMC(final InterModEnqueueEvent event) {
-        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.HEAD.getMessageBuilder().cosmetic().build());
+    public void commonSetup(final FMLCommonSetupEvent event) {
+        CuriosApi.registerCurioPredicate(new ResourceLocation(SimpleHats.modId, "validator"), slotResult -> {
+            if (slotResult.stack().getItem() instanceof HatItem) {
+                return true;
+            }
+
+            // TODO: fallback to other predicates, not just the default
+            return slotResult.stack().is(TagKey.create(Registries.ITEM, new ResourceLocation("curios", "head")));
+        });
     }
 
     public void clientSetup(final FMLClientSetupEvent event) {
