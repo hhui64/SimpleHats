@@ -10,7 +10,6 @@ import fonnymunkey.simplehats.util.HatEntry;
 import fonnymunkey.simplehats.util.UUIDHandler;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.cauldron.CauldronInteraction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
