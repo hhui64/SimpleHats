@@ -110,7 +110,7 @@ public class HatJson {
             new HatEntry("foxhat", Rarity.RARE, 5, 1, new HatEntry.HatDyeSettings(true, 16383998)),
             new HatEntry("fro", Rarity.COMMON, 5, 0, new HatEntry.HatDyeSettings(true, 16383998)),
             new HatEntry("frozenhead", Rarity.UNCOMMON, 5, 0, new HatEntry.HatParticleSettings(true, "minecraft:snowflake", 0.05F, HatEntry.HatParticleSettings.HatParticleMovement.TRAILING_FULL)),
-            new HatEntry("fullironhelm", Rarity.UNCOMMON, 5, 2),
+            new HatEntry("fullironhelm", Rarity.UNCOMMON, 5, 3),
             new HatEntry("ghostmask", Rarity.EPIC, 5, 0, new HatEntry.HatParticleSettings(true, "minecraft:soul", 0.05F, HatEntry.HatParticleSettings.HatParticleMovement.TRAILING_HEAD), HatEntry.HatSeason.HALLOWEEN),
             new HatEntry("goggles", Rarity.COMMON, 5, 0),
             new HatEntry("grandmadisguise", Rarity.COMMON, 5, 0),
