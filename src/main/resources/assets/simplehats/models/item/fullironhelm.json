@@ -8,7 +8,9 @@
 	{"predicate": {"custom_model_data": 1},
       "model": "simplehats:item/fullgoldhelm"},
 	{"predicate": {"custom_model_data": 2},
-      "model": "simplehats:item/fulldiamondhelm"}
+      "model": "simplehats:item/fulldiamondhelm"},
+	{"predicate": {"custom_model_data": 3},
+      "model": "simplehats:item/fullsteelhelm"}
 	],
 	"elements": [
 		{
