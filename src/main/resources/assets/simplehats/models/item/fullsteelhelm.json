@@ -1,5 +1,5 @@
 {
-	"parent": "simplehats:item/hatparent",
+	"parent": "simplehats:item/hatparent2",
 	"texture_size": [64, 64],
 	"textures": {
 		"2": "simplehats:item/hats/fullsteelhelm"
@@ -358,27 +358,6 @@
 		}
 	],
 	"display": {
-		"thirdperson_righthand": {
-			"translation": [0, 0, -2.75],
-			"scale": [0.5, 0.5, 0.5]
-		},
-		"thirdperson_lefthand": {
-			"translation": [0, 0, -2.75],
-			"scale": [0.5, 0.5, 0.5]
-		},
-		"firstperson_righthand": {
-			"rotation": [0, 135, 0],
-			"translation": [-1, 4, 0],
-			"scale": [0.5, 0.5, 0.5]
-		},
-		"firstperson_lefthand": {
-			"rotation": [0, 135, 0],
-			"translation": [-1, 4, 0],
-			"scale": [0.5, 0.5, 0.5]
-		},
-		"ground": {
-			"scale": [0.66, 0.66, 0.66]
-		},
 		"gui": {
 			"rotation": [35, -135, 0],
 			"translation": [0, -1.5, 0],
