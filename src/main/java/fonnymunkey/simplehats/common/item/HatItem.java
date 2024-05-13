@@ -32,13 +32,14 @@ import net.minecraft.text.Text;
 import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
 public class HatItem extends TrinketItem implements TrinketRenderer {
 
     private HatEntry hatEntry;
-    private BakedModel hatModel;
+    private HashMap<Integer, BakedModel> modelMap = new HashMap<Integer, BakedModel>();
 
     public HatItem(HatEntry entry) {
         super(new Item.Settings()
@@ -97,9 +98,11 @@ public class HatItem extends TrinketItem implements TrinketRenderer {
             matrixStack.scale(0.66F, 0.66F, 0.66F);
             matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(180.0F));
             matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
-            if(hatModel == null) hatModel = renderer.getModel(stack, entity.world, entity, 0);
-            if(stack.getNbt() != null && stack.getNbt().getInt("CustomModelData") != 0) renderer.renderItem(stack, ModelTransformation.Mode.HEAD, false, matrixStack, renderTypeBuffer, light, OverlayTexture.DEFAULT_UV, Objects.requireNonNullElse(hatModel.getOverrides().apply(hatModel, stack, (ClientWorld)entity.world, entity, 0), hatModel));
-            else renderer.renderItem(stack, ModelTransformation.Mode.HEAD, false, matrixStack, renderTypeBuffer, light, OverlayTexture.DEFAULT_UV, hatModel);
+            //Manually handle CustomModelData override since it seems to get cached on Fabric
+            int cmd = 0;
+            if(stack.getNbt() != null) cmd = stack.getNbt().getInt("CustomModelData");
+            if(modelMap.get(cmd) == null) modelMap.put(cmd, renderer.getModel(stack, entity.world, entity, cmd));
+            renderer.renderItem(stack, ModelTransformation.Mode.HEAD, false, matrixStack, renderTypeBuffer, light, OverlayTexture.DEFAULT_UV, modelMap.get(cmd));
             matrixStack.pop();
         }
         if(entity instanceof PlayerEntity) {
