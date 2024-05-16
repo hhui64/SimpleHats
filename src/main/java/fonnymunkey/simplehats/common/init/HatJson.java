@@ -262,6 +262,7 @@ public class HatJson {
             new HatEntry("worms_mine", Rarity.UNCOMMON, 5, 0),
 
             new HatEntry("alien_antennae", Rarity.COMMON, 5, 0, new HatEntry.HatDyeSettings(true, 5308240)),
+            new HatEntry("angel_and_devil", Rarity.EPIC, 5, 0),
             new HatEntry("astronaut", Rarity.COMMON, 5, 0),
             new HatEntry("axolotl_on_head", Rarity.EPIC, 5, 0, new HatEntry.HatParticleSettings(true, "minecraft:dolphin", 0.1F, HatEntry.HatParticleSettings.HatParticleMovement.TRAILING_HEAD)),
             new HatEntry("baby_crewmate", Rarity.RARE, 5, 0, new HatEntry.HatDyeSettings(true, 16719360)),
